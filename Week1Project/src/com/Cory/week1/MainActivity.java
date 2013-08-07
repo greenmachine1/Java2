@@ -23,27 +23,19 @@ import android.view.Menu;
 
 public class MainActivity extends Activity {
 
+	FileOutputStream fos;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         String content = "Java isnt that great";
         
-        // calling my writeDataToStorage method
-        writeDataToStorage(content);
-        
-        
-    }
-    
-    
-    // writeDataToStorage does exactly what It says 
-    private void writeDataToStorage(String data){
-    	// all of this is to put the string content into storage
+        // my file storage
         try {
-			FileOutputStream fos = openFileOutput("MyFile", Context.MODE_PRIVATE);
-			fos.write(data.getBytes());
+			fos = openFileOutput("Myfile", Context.MODE_PRIVATE);
+			fos.write(content.getBytes());
 			fos.close();
-			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,9 +45,9 @@ public class MainActivity extends Activity {
 		}
     }
     
-    private String returnDataFromStorage(String fileName){
+    String readTextFile(){
     	try{
-    		FileInputStream fin = openFileInput([fileName]);
+    		FileInputStream fin = openFileInput(fos);
     		BufferedInputStream bin = new BufferedInputStream(fin);
     		byte[] contentBytes = new byte[1024];
     		int bytesRead = 0;
@@ -73,8 +65,13 @@ public class MainActivity extends Activity {
     	}catch(IOException e){
     		return "";
     	}
-    	return null;
+    	
+		return null;
+    	
     }
+
+    
+    
 
 
     @Override
