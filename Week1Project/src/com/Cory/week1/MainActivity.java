@@ -18,6 +18,7 @@ import java.io.IOException;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
@@ -30,6 +31,7 @@ public class MainActivity extends Activity {
         
         // calling my writeDataToStorage method
         writeDataToStorage(content);
+        
         
     }
     
@@ -51,28 +53,27 @@ public class MainActivity extends Activity {
 		}
     }
     
-    private StringBuffer returnDataFromStorage(String fileName){
-    	FileInputStream fileInputStream;
-		try {
-			fileInputStream = openFileInput(fileName);
-		
-    	BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-    	byte[] contentBytes = new byte[1024];
-    	int bytesRead = 0;
-    	String content;
-    	StringBuffer contentBuffer = new StringBuffer();
-  
-		while((bytesRead = bufferedInputStream.read(contentBytes)) != -1){
-			content = new String(contentBytes,0,bytesRead);
-			contentBuffer.append(content);
-			}
-		return contentBuffer;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-    	
+    private String returnDataFromStorage(String fileName){
+    	try{
+    		FileInputStream fin = openFileInput([fileName]);
+    		BufferedInputStream bin = new BufferedInputStream(fin);
+    		byte[] contentBytes = new byte[1024];
+    		int bytesRead = 0;
+    		String content;
+    		StringBuffer contentBuffer = new StringBuffer();
+    		
+    		while((bytesRead = bin.read(contentBytes)) != -1){
+    			content = new String(contentBytes,0,bytesRead);
+    			contentBuffer.append(content);
+    		}
+    		
+    		return contentBuffer;
+    	}catch(FileNotFoundException e){
+    		return "";
+    	}catch(IOException e){
+    		return "";
+    	}
+    	return null;
     }
 
 
