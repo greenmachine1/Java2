@@ -26,11 +26,18 @@ public class MainActivity extends Activity {
         
         String content = "Java isnt that great";
         
+        // calling my writeDataToStorage method
+        writeDataToStorage(content);
         
-        // all of this is to put the string content into storage
+    }
+    
+    
+    // writeDataToStorage does exactly what It says 
+    private void writeDataToStorage(String data){
+    	// all of this is to put the string content into storage
         try {
 			FileOutputStream fos = openFileOutput("MyFile", Context.MODE_PRIVATE);
-			fos.write(content.getBytes());
+			fos.write(data.getBytes());
 			fos.close();
 			
 		} catch (FileNotFoundException e) {
@@ -40,7 +47,6 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
     }
 
 
