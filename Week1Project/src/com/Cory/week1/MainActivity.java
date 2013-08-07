@@ -1,3 +1,12 @@
+/*
+ * Project		Week1Project
+ * 
+ * Package		com.Cory.week1
+ * 
+ * Author		Cory Green
+ * 
+ * date			Aug 6, 2013
+ */
 package com.Cory.week1;
 
 import android.os.Bundle;
