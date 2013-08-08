@@ -1,5 +1,7 @@
 package com.Cory.week1;
 
-public class Json {
+
+// this class will pull json data from apple api
+public class Json extends MainActivity{
 
 }
