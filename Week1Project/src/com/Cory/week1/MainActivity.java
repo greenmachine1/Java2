@@ -11,10 +11,12 @@ package com.Cory.week1;
 import android.os.Bundle;
 import android.app.Activity;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 	
@@ -25,6 +27,8 @@ public class MainActivity extends Activity {
         // sets the xml file layout to be the view
         setContentView(R.layout.layout);
         
+        EditText userEnteredField = (EditText) findViewById(R.id.userEnteredText);
+        
         Button goButton = (Button) findViewById(R.id.goButton);
         goButton.setOnClickListener(new OnClickListener(){
 
@@ -32,6 +36,9 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				
+				// this will call my retrieve json methods
+				Json newJson = new Json();
+				Log.i("Yup",newJson.returnJsonData());
 			}
         	
         });
