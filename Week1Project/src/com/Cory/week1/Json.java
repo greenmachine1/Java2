@@ -5,10 +5,10 @@ package com.Cory.week1;
 public class Json extends MainActivity{
 
 	
-	public String returnJsonData(){
+	public String returnJsonData(String thingy){
 		
 		
-		return "Hello";
+		return "Hello" + thingy;
 		
 	}
 	

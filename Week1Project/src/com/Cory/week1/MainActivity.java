@@ -20,6 +20,8 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
 	
+	String inputString;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +29,7 @@ public class MainActivity extends Activity {
         // sets the xml file layout to be the view
         setContentView(R.layout.layout);
         
-        EditText userEnteredField = (EditText) findViewById(R.id.userEnteredText);
-        
+        // setting up my gobutton
         Button goButton = (Button) findViewById(R.id.goButton);
         goButton.setOnClickListener(new OnClickListener(){
 
@@ -38,7 +39,12 @@ public class MainActivity extends Activity {
 				
 				// this will call my retrieve json methods
 				Json newJson = new Json();
-				Log.i("Yup",newJson.returnJsonData());
+				
+				// gathering user input
+		        EditText userEnteredField = (EditText) findViewById(R.id.userEnteredText);
+		        inputString = userEnteredField.getText().toString();
+				
+				Log.i("Yup",newJson.returnJsonData(inputString));
 			}
         	
         });
