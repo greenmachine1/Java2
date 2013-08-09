@@ -59,12 +59,9 @@ public class MainActivity extends Activity {
 		        EditText userEnteredField = (EditText) findViewById(R.id.userEnteredText);
 		        inputString = userEnteredField.getText().toString();
 				
-				Log.i("Yup",newJson.returnJsonData(inputString));
+				newJson.returnJsonData(inputString);
 				
-				if(newJson.returnJsonData(inputString) != null)
-				{
-					Log.i("yes", newJson.returnedLinkUrl());
-				}
+				
 				
 				
 			}

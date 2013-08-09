@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import com.Cory.lib.WebInfo;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -21,7 +22,7 @@ public class Json extends MainActivity{
 	String primaryGenre = "";
 	String artistLinkUrl = "";
 	
-	public String returnJsonData(String passedInUserInput){
+	public void returnJsonData(String passedInUserInput){
 		
 		// outputting what the user inputted
 		//Log.i("Clicked", passedInUserInput);
@@ -49,14 +50,13 @@ public class Json extends MainActivity{
 			finalURL = null;
 		}
 		
-		return passedInUserInput;
 		
 		
 	}
 	
 	
 	// this actually sends out the request
-	private class infoRequest extends AsyncTask<URL, Void, String>{
+	public class infoRequest extends AsyncTask<URL, Void, String>{
 
 		@Override
 		protected String doInBackground(URL... urls) {
@@ -79,27 +79,17 @@ public class Json extends MainActivity{
 					primaryGenre = results.getJSONObject(0).getString("primaryGenreName").toString();
 					artistLinkUrl = results.getJSONObject(0).getString("artistLinkUrl").toString();
 
+					Log.i("name", artistName);
+					Log.i("name", primaryGenre);
+					Log.i("name", artistLinkUrl);
+					
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				Log.e("Nope", "No such file");
 			}
 			
-			
-			
-			
 		}
-	}
-	public String returnedArtistName(){
-		return artistName;
-	}
-	
-	public String returnedPrimaryGenre(){
-		return primaryGenre;
-	}
-	
-	public String returnedLinkUrl(){
-		return artistLinkUrl;
 	}
 }
 	
