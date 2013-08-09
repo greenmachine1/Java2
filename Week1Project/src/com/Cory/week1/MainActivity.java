@@ -30,16 +30,19 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            
+        
+        _context = this;
+        
         // sets the xml file layout to be the view
         setContentView(R.layout.layout);
         
         // Detect network connection
-       _connected = WebInfo.getConnectionStatus(_context);
-        if(_connected)
-     	{
-     		Log.i("Network Connection", WebInfo.getConnectionType(_context));
-   		}
+        _connected = WebInfo.getConnectionStatus(_context);
+         if(_connected)
+      	{
+      		Log.i("Network Connection", WebInfo.getConnectionType(_context));
+    	}
+        
         
         // setting up my gobutton
         Button goButton = (Button) findViewById(R.id.goButton);
@@ -57,11 +60,12 @@ public class MainActivity extends Activity {
 		        inputString = userEnteredField.getText().toString();
 				
 				Log.i("Yup",newJson.returnJsonData(inputString));
+				
 			}
         	
         });
         
-        
+
         
       
     }
