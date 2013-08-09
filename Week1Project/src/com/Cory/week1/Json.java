@@ -13,6 +13,7 @@ import com.Cory.lib.WebInfo;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.EditText;
 
 
 // this class will pull json data from apple api
@@ -82,6 +83,10 @@ public class Json extends MainActivity{
 					Log.i("name", artistName);
 					Log.i("name", primaryGenre);
 					Log.i("name", artistLinkUrl);
+					
+					//EditText artistNameField = (EditText)findViewById(R.id.Name);
+					
+					
 					
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
