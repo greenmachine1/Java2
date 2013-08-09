@@ -8,8 +8,11 @@
  * date			Aug 6, 2013
  */
 package com.Cory.week1;
+import com.Cory.lib.WebInfo;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 
 import android.util.Log;
 import android.view.Menu;
@@ -21,13 +24,22 @@ import android.widget.EditText;
 public class MainActivity extends Activity {
 	
 	String inputString;
+	Boolean _connected = false;
+	Context _context;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+            
         // sets the xml file layout to be the view
         setContentView(R.layout.layout);
+        
+        // Detect network connection
+       _connected = WebInfo.getConnectionStatus(_context);
+        if(_connected)
+     	{
+     		Log.i("Network Connection", WebInfo.getConnectionType(_context));
+   		}
         
         // setting up my gobutton
         Button goButton = (Button) findViewById(R.id.goButton);
