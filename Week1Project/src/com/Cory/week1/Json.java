@@ -19,14 +19,11 @@ import android.widget.EditText;
 // this class will pull json data from apple api
 public class Json extends MainActivity{
 
-	String artistName ="";
-	String primaryGenre = "";
-	String artistLinkUrl = "";
+
 	
-	public void returnJsonData(String passedInUserInput){
+	public String returnJsonData(String passedInUserInput){
 		
-		// outputting what the user inputted
-		//Log.i("Clicked", passedInUserInput);
+		String tempReturnedString = "";
 		
 		// creation of url
 		String baseURL = "https://itunes.apple.com/search?term=";
@@ -46,19 +43,28 @@ public class Json extends MainActivity{
 			finalURL = new URL(completeURL);
 			infoRequest newRequest = new infoRequest();
 			newRequest.execute(finalURL);
+			if(newRequest != null){
+				return "Sure";
+			}
+			
 		}catch(MalformedURLException e){
 			Log.e("Bad Url", "malformed URL");
 			finalURL = null;
 		}
 		
 		
-		
+		return null;
 	}
 	
 	
 	// this actually sends out the request
 	public class infoRequest extends AsyncTask<URL, Void, String>{
 
+		String artistName = "";
+		String primaryGenre = "";
+		String artistLinkUrl = "";
+		
+		
 		@Override
 		protected String doInBackground(URL... urls) {
 			String response = "";
@@ -80,11 +86,12 @@ public class Json extends MainActivity{
 					primaryGenre = results.getJSONObject(0).getString("primaryGenreName").toString();
 					artistLinkUrl = results.getJSONObject(0).getString("artistLinkUrl").toString();
 
-					Log.i("name", artistName);
-					Log.i("name", primaryGenre);
-					Log.i("name", artistLinkUrl);
+					//Log.i("name", artistName);
+					//Log.i("name", primaryGenre);
+					//Log.i("name", artistLinkUrl);
 					
-					//EditText artistNameField = (EditText)findViewById(R.id.Name);
+					
+					
 					
 					
 					
@@ -94,6 +101,8 @@ public class Json extends MainActivity{
 				Log.e("Nope", "No such file");
 			}
 			
+			//Log.i("Yes", artistName);
+
 		}
 	}
 }

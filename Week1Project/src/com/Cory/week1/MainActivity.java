@@ -59,10 +59,7 @@ public class MainActivity extends Activity {
 		        EditText userEnteredField = (EditText) findViewById(R.id.userEnteredText);
 		        inputString = userEnteredField.getText().toString();
 				
-				newJson.returnJsonData(inputString);
-				
-				
-				
+				Log.i("This",newJson.returnJsonData(inputString));
 				
 			}
         	
