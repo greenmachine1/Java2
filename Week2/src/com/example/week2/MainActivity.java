@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
 			Log.e("Bad Url", "malformed URL");
 			finalURL = null;
 		}
-		return returnsStuff;
+		return null;
 		
 		
 	}
@@ -143,24 +143,9 @@ public class MainActivity extends Activity {
 				Log.e("Nope", "No such file");
 			}
 
-		}
-		
-		
-		
-		
+		}	
 	}
-	class returnsStuff extends infoRequest{
-		
-		public String returnsName(){
-			return artistName;
-		}
-		public String returnsUrl(){
-			return artistLinkUrl;
-		}
-		public String returnsGenre(){
-			return primaryGenre;
-		}
-	}
+
     
        
     @Override
